@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление нового работника</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .back-button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <h2>Добавить нового работника</h2>
+    <form method="post" action="@Url.Action("AddEmployee", "Employee")">
+        <div>
+            <label for="DepartmentId">Отдел:</label>
+            <select id="DepartmentId" name="DepartmentId" required>
+                <option value="">Выберите отдел</option>
+                @foreach (var department in Model)
+                {
+                    <option value="@department.DepartmentId">@department.Name</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label for="Name">Имя:</label>
+            <input type="text" id="Name" name="Name" required />
+        </div>
+        <div>
+            <label for="Position">Должность:</label>
+            <input type="text" id="Position" name="Position" />
+        </div>
+        <div>
+            <label for="Phone">Телефон:</label>
+            <input type="text" id="Phone" name="Phone" />
+        </div>
+        <div>
+            <label for="Email">Email:</label>
+            <input type="email" id="Email" name="Email" />
+        </div>
+        <button type="submit">Добавить работника</button>
+        <a href="@Url.Action("Index", "Home")" class="back-button">Назад на главную</a>
+    </form>
+</body>
+</html>

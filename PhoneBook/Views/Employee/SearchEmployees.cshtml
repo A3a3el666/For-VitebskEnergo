@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Поиск сотрудников";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 50%;
+            display: inline-block;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 15px;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        p {
+            color: #777;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            float:right;
+        }
+
+            .back-button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <h2>Поиск сотрудников</h2>
+
+    <form asp-controller="Employee" asp-action="SearchEmployees" method="get">
+        <label for="searchString">Поиск:</label>
+        <input type="text" id="searchString" name="searchString" />
+        <button type="submit">Найти</button>
+        <a href="@Url.Action("Index", "Home")" class="back-button">Назад на главную</a>
+    </form>
+
+    @if (Model.Count > 0)
+    {
+        <h3>Результаты поиска:</h3>
+        <ul>
+            @foreach (var employee in Model)
+            {
+                <li>
+                    <strong>Имя:</strong> @employee.Name <br />
+                    <strong>Должность:</strong> @employee.Position <br />
+                    <strong>Телефон:</strong> @employee.Phone <br />
+                    <strong>Email:</strong> @employee.Email
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Сотрудник не найден.</p>
+    }
+</body>
+</html>

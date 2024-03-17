@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование сотрудника</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 25%;
+            display: inline-block;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 15px;
+            width: 40%;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            float: right;
+            width: 40%;
+        }
+
+            .back-button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <h2>Редактирование сотрудника</h2>
+    <form method="post" action="@Url.Action("EditEmployee", "Employee")">
+        <input type="hidden" name="employeeId" value="@Model.EmployeeId" />
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" value="@Model.Name" /><br />
+        <label for="position">Должность:</label>
+        <input type="text" id="position" name="position" value="@Model.Position" /><br />
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" name="phone" value="@Model.Phone" /><br />
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="@Model.Email" /><br />
+        <button type="submit">Сохранить</button>
+        <a href="@Url.Action("Index", "Home")" class="back-button">Назад на главную</a>
+    </form>
+</body>
+</html>

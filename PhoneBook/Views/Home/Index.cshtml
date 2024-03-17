@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        * {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        body {
+            margin-top: 5px;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 50%;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: darkblue;
+                text-decoration: underline;
+            }
+
+        .button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display:block;
+            margin:0 auto;
+            width: 70%;
+        }
+
+            .button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Действия с работниками</th>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("AllEmployees", "Employee")" class="button">Все работники</a></td>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("AddEmployeeForm", "Employee")" class="button">Добавить работника</a></td>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("SelectEmployeeForEdit", "Employee")" class="button">Редактировать работника</a></td>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("DeleteEmployeeForm", "Employee")" class="button">Удалить работника</a></td>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("SearchEmployees", "Employee")" class="button">Поиск работника</a></td>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("ChooseDepartmentForm", "Employee")" class="button">Показать работников подразделения</a></td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <th>Действия с подразделениями</th>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("AllDepartments", "Department")" class="button">Все подразделения</a></td>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("AddDepartmentForm", "Department")" class="button">Добавить подразделение</a></td>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("SelectDepartmentForEdit", "Department")" class="button">Редактировать подразделение</a></td>
+        </tr>
+        <tr>
+            <td><a href="@Url.Action("DeleteDepartmentForm", "Department")" class="button">Удалить подразделение</a></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выберите подразделение для редактирования</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 50%;
+            display: inline-block;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        button.button {
+            display: block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            border: none;
+            margin: 10px auto;
+            width: 80%;
+            font-size: 15px;
+        }
+
+        button.button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 20%;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Выберите подразделение для редактирования</h2>
+    <form method="post" action="@Url.Action("EditDepartmentForm", "Department")">
+        <ul>
+            @foreach (var department in Model)
+            {
+                <li><button type="submit" name="departmentId" value="@department.DepartmentId" class="button">@department.Name</button></li>
+            }
+        </ul>
+    </form>
+    <a href="@Url.Action("Index", "Home")" class="back-button">Назад на главную</a>
+</body>
+</html>

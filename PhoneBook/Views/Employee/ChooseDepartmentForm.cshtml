@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор подразделения</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 15px;
+        }
+
+            button[type="submit"]:hover {
+                background-color: ##45a049;
+            }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 30px 0;
+        }
+
+            .back-button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <h2>Выберите подразделение</h2>
+    <form method="get" action="@Url.Action("EmployeesByDepartment", "Employee")">
+        <div>
+            <label for="departmentId">Подразделение:</label>
+            <select id="departmentId" name="departmentId">
+                <option value="">Выберите подразделение</option>
+                @foreach (var department in Model)
+                {
+                    <option value="@department.DepartmentId">@department.Name</option>
+                }
+            </select>
+        </div>
+        <button type="submit">Показать работников</button>
+        <a href="@Url.Action("Index", "Home")" class="back-button">Назад на главную</a>
+    </form>
+</body>
+</html>
