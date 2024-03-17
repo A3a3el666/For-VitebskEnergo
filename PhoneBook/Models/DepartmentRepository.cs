@@ -62,10 +62,7 @@ namespace Phonebook.Models
             {
                 connection.Open();
 
-                // Удаляем всех детей данного подразделения
                 DeleteChildDepartments(departmentId, connection);
-
-                // Удаляем само подразделение
                 using (var deleteCommand = new NpgsqlCommand("DELETE FROM departments WHERE departmentid = @DepartmentId", connection))
                 {
                     deleteCommand.Parameters.AddWithValue("@DepartmentId", departmentId);
@@ -84,7 +81,6 @@ namespace Phonebook.Models
                     while (reader.Read())
                     {
                         var childDepartmentId = reader.GetInt32(0);
-                        // Удаляем дочернее подразделение и его потомков
                         DeleteDepartmentAndDescendantsRecursive(childDepartmentId);
                     }
                 }

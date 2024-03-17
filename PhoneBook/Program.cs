@@ -4,14 +4,12 @@ using Phonebook.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddSingleton<DepartmentRepository>();
-builder.Services.AddSingleton<EmployeeRepository>();// Register DepartmentRepository as a singleton
-builder.Services.AddControllersWithViews(); // Add controller and view services
+builder.Services.AddSingleton<EmployeeRepository>();
+builder.Services.AddControllersWithViews(); 
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
